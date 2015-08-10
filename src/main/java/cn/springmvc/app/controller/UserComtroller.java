@@ -41,22 +41,19 @@ public class UserComtroller {
         
         logger.info("sssss - " + user);
         
+        
         model.addAttribute("serverTime", "jingwen");
         return "index";
     }
 	
 	@RequestMapping("search")
     public void search(HttpServletRequest req,HttpServletResponse response){
-		logger.debug("1111111");
-		System.out.println("233333333333333");
         Map<String, Object> parmMap = new HashMap<String, Object>();
-//        parmMap.put("id", req.getParameter("id"));
         parmMap.put("page", Integer.valueOf(req.getParameter("page")));
         parmMap.put("limit", Integer.valueOf(req.getParameter("limit")));
         System.out.println("233333333333333: " + parmMap);
         logger.debug("parm : " + parmMap);
         List list = userService.getData(parmMap);
-        System.out.println("List : " + list.toString());
-        /*return "search";*/
+        logger.debug("List : " + list);
     }
 }
